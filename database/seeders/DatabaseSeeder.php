@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Items;
 use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -35,8 +37,33 @@ class DatabaseSeeder extends Seeder
         foreach ($roles as $role_data) {
             Roles::create($role_data);
         };
-        // User::factory(10)->create();
 
+        // Category
+        $category = [
+            [
+                'name' => 'elektronik',
+                'description' => null
+            ],
+            [
+                'name' => 'pakaian',
+                'description' => null
+            ],
+        ];
+
+        foreach ($category as $data) {
+            Category::create($data);
+        }
+
+        // items
+        Items::create([
+            'category_id' => 1,
+            'sku' => 'SmartPhone',
+            'unit' => 'SMP001',
+            'description' => 'smartphone'
+        ]);
+
+
+        // User::factory(10)->create();
         // Create a single admin user with known credentials
         User::create([
             'name' => 'Admin User',
