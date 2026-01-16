@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Roles>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
-class RolesFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,11 +16,11 @@ class RolesFactory extends Factory
      */
     public function definition(): array
     {
-        $role_name = ['admin', 'staff', 'supervisor', 'auditor'];
-
         return [
             //
-            'role_name' => $this->faker->randomElement($role_name)
+            'name' => $this->faker->domainName,
+            'location' => $this->faker->address(),
+            'description' => $this->faker->paragraph(),
         ];
     }
 }

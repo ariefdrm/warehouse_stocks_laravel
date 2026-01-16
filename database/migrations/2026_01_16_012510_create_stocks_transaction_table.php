@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('stocks_transaction', function (Blueprint $table) {
             $table->id();
             $table->foreignId('items_id')->references('id')->on('items')->cascadeOnDelete();
+            $table->foreignId('warehouse_id')->references('id')->on('warehouse')->cascadeOnDelete();
             $table->foreignId('users_id')->references('id')->on('users')->cascadeOnDelete();
             $table->char('type', 3);
             $table->integer('quantity');
