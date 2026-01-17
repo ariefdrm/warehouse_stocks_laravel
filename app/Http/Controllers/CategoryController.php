@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::latest()->paginate(10);
+        $data = Category::latest()->paginate(10);
+
+        return view('categories.index', compact('data'));
+    }
+
+    public function create()
+    {
+        return view('categories.create');
     }
 
     /**
@@ -21,16 +29,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:100|unique:categories,name',
+            'name' => 'required|string|max:100|unique:category,name',
             'description' => 'nullable|string',
         ]);
 
-        $category = Category::create($validated);
+        Category::create($validated);
 
-        return response()->json([
-            'message' => 'Category created successfully',
-            'data' => $category,
-        ], 201);
+        return redirect()->route('categories.index')->with('success', 'Categori Berhasil Ditambahkan');
     }
 
     /**
@@ -38,7 +43,12 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return $category;
+        return view('categories.show', compact('category'));
+    }
+
+    public function edit(Category $category)
+    {
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -47,16 +57,16 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:100|unique:categories,name,' . $category->id,
+            'name' => [
+                'required',
+                Rule::unique('category', 'name')->ignore($category->id),
+            ],
             'description' => 'nullable|string',
         ]);
 
         $category->update($validated);
 
-        return response()->json([
-            'message' => 'Category updated successfully',
-            'data' => $category,
-        ]);
+        return redirect()->route('categories.index')->with('success', 'Categori Berhasil Diperbarui');
     }
 
     /**
@@ -66,8 +76,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return response()->json([
-            'message' => 'Category deleted successfully',
-        ]);
+        return redirect()->route('categories.index')->with('danger', 'Categori Berhasil Dihapus');
     }
 }

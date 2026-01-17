@@ -45,55 +45,37 @@
 
 <body class="antialiased bg-slate-50 text-slate-900" x-data="{ sidebarOpen: localStorage.getItem('sidebarStatus') !== 'false' }" x-init="$watch('sidebarOpen', value => localStorage.setItem('sidebarStatus', value))">
 
-    <div class="flex min-h-screen overflow-hidden">
+    <div class="flex h-screen overflow-hidden bg-slate-50">
 
         @include('layouts.sidebar')
 
-        <div class="flex-1 flex flex-col min-w-0 bg-slate-50">
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
 
             @isset($header)
-                <header
-                    class="bg-white border-b border-slate-200 px-8 py-5 sticky top-0 z-30 shadow-sm shadow-slate-200/20">
-                    <div class="max-w-full mx-auto flex items-center justify-between">
-                        <div>
-                            <h2 class="font-bold text-2xl text-slate-800 tracking-tight leading-tight">
-                                {{ $header }}
-                            </h2>
-                            <p class="text-[11px] text-slate-400 font-semibold uppercase tracking-wider mt-1">
-                                Main Dashboard / {{ $header }}
-                            </p>
-                        </div>
-
-                        @isset($actions)
-                            <div class="flex items-center gap-3">
-                                {{ $actions }}
-                            </div>
-                        @endisset
+                <header class="bg-white border-b border-slate-200 px-8 py-5 z-30 shrink-0">
+                    <div class="flex items-center justify-between">
+                        <h2 class="font-bold text-2xl text-slate-800 tracking-tight leading-tight">
+                            {{ $header }}
+                        </h2>
                     </div>
                 </header>
             @endisset
 
-            <main class="flex-1 overflow-x-hidden overflow-y-auto p-8">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-8 custom-scrollbar">
                 <div class="max-w-full mx-auto">
                     @if (isset($slot))
                         {{ $slot }}
                     @else
                         @yield('content')
                     @endif
+
+                    <footer class="py-8 mt-12 border-t border-slate-200">
+                        <p class="text-[11px] text-slate-400 font-medium text-center uppercase tracking-widest">
+                            &copy; {{ date('Y') }} StokFlow System v1.0.4
+                        </p>
+                    </footer>
                 </div>
             </main>
-
-            <footer class="py-4 border-t border-slate-200 bg-white px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-2">
-                    <p class="text-[11px] text-slate-400 font-medium">
-                        &copy; {{ date('Y') }} {{ config('app.name') }} Internal System. All rights reserved.
-                    </p>
-                    <div class="flex gap-4">
-                        <span
-                            class="text-[11px] text-slate-400 font-bold uppercase tracking-tighter">v1.0.4-stable</span>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
 </body>

@@ -60,16 +60,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8">
                 <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                    <span
+                    {{-- <span
                         class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-700 uppercase bg-blue-100 rounded-full mb-4">
                         v2.0 Telah Rilis
-                    </span>
+                    </span> --}}
                     <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
                         Kelola Stok Gudang <span class="text-blue-600">Tanpa Pusing</span>
                     </h1>
                     <p class="mt-6 text-lg text-slate-600">
-                        Optimalkan operasional inventaris Anda dengan pelacakan real-time, manajemen vendor otomatis,
-                        dan laporan analitik yang akurat dalam satu platform terintegrasi.
+                        Solusi inventaris cerdas untuk Anda yang lebih percaya pada akurasi data real-time, daripada
+                        janji manis 19 juta tenaga kerja yang entah kapan terealisasi (dan entah di mana barangnya)
                     </p>
                     <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:justify-center lg:justify-start">
                         <a href="{{ route('register') }}"
@@ -82,7 +82,11 @@
                         </a> --}}
                     </div>
                 </div>
-                <div
+                <div class="w-full lg:max-w-none lg:mx-0 lg:col-span-6 flex justify-center">
+                    <img src="{{ asset('images/warehouse_worker.png') }}" alt="Warehouse Image"
+                        class="rounded-xl shadow-xl mt-10 lg:mt-0 lg:col-span-6 object-cover">
+                </div>
+                {{-- <div
                     class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
                     <div
                         class="relative mx-auto w-full rounded-2xl shadow-2xl overflow-hidden bg-slate-800 border-8 border-slate-900">
@@ -100,7 +104,7 @@
                             <div class="h-40 bg-slate-600 rounded-lg animate-pulse"></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </header>
@@ -156,9 +160,9 @@
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-12">
+    <footer class="bg-slate-900 text-slate-400 py-4">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>&copy; 2024 StokFlow Inc. Built with Laravel & Tailwind CSS.</p>
+            <p>&copy; 2026 StokFlow Inc. Built with Laravel & Tailwind CSS.</p>
         </div>
     </footer>
 

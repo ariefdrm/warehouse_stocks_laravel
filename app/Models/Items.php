@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Models;
+
+use App\Models\Category;
 use App\Models\Stocks;
 use App\Models\StocksTransaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
