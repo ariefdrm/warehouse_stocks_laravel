@@ -1,7 +1,8 @@
 <?php
 
+namespace App\Models;
+
 use App\Models\Items;
-use App\Models\User;
 use App\Models\Warehouse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,9 +15,9 @@ class StocksTransaction extends Model
     protected $table = 'stocks_transaction';
 
     protected $fillable = [
-        'item_id',
+        'items_id',
         'warehouse_id',
-        'user_id',
+        'users_id',
         'type',        // IN | OUT | ADJUSTMENT
         'quantity',
         'note',
@@ -29,7 +30,7 @@ class StocksTransaction extends Model
 
     /* ================= RELATION ================= */
 
-    public function item()
+    public function items()
     {
         return $this->belongsTo(Items::class);
     }
@@ -39,7 +40,7 @@ class StocksTransaction extends Model
         return $this->belongsTo(Warehouse::class);
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 use App\Models\Items;
 use App\Models\Warehouse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,16 +11,17 @@ class Stocks extends Model
 {
     //
     use HasFactory;
+    protected $table = 'stocks';
 
     protected $fillable = [
-        'item_id',
+        'items_id',
         'warehouse_id',
         'quantity',
     ];
 
     /* ================= RELATION ================= */
 
-    public function item()
+    public function items()
     {
         return $this->belongsTo(Items::class);
     }

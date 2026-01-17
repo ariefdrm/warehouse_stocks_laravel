@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('items_id')->references('id')->on('items')->cascadeOnDelete();
             $table->foreignId('warehouse_id')->references('id')->on('warehouse')->cascadeOnDelete();
             $table->foreignId('users_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->char('type', 3);
+            $table->enum('type', ['IN', 'OUT']);
             $table->integer('quantity');
             $table->longText('note');
             $table->date('transaction_date')->useCurrent();
