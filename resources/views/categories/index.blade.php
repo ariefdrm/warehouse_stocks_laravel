@@ -11,13 +11,13 @@
             <p class="text-sm text-slate-500">Kelola kategori barang untuk pengelompokan stok yang lebih baik.</p>
         </div>
         <a href="{{ route('categories.create') }}"
-           class="inline-flex items-center px-4 py-2 bg-brand-primary text-black dark:text-white text-sm font-semibold rounded-enterprise  bg-blue-400 hover:bg-blue-700 transition shadow-sm">
+           class="inline-flex items-center px-4 py-2 bg-brand-primary text-black dark:text-white text-sm font-semibold rounded-enterprise  bg-blue-400 hover:bg-blue-700 transition shadow-sm rounded-xl">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
             Tambah Kategori
         </a>
     </div>
 
-    <div class="bg-white rounded-enterprise border border-slate-200 shadow-sm overflow-hidden">
+    <div class="bg-white rounded-enterprise border border-slate-200 shadow-sm overflow-hidden rounded-3xl">
         <table class="w-full text-left border-collapse">
             <thead class="bg-slate-50 border-bottom border-slate-200">
                 <tr>

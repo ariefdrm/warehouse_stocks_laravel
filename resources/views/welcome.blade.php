@@ -68,7 +68,7 @@
                         Kelola Stok Gudang <span class="text-blue-600">Tanpa Pusing</span>
                     </h1>
                     <p class="mt-6 text-lg text-slate-600">
-                        Solusi inventaris cerdas untuk Anda yang lebih percaya pada akurasi data real-time, daripada
+                        Solusi inventaris cerdas untuk Anda yang lebih percaya pada akurasi data dan keandalan, daripada
                         janji manis 19 juta tenaga kerja yang entah kapan terealisasi (dan entah di mana barangnya)
                     </p>
                     <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:justify-center lg:justify-start">

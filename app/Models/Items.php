@@ -16,7 +16,6 @@ class Items extends Model
     protected $fillable = [
         'category_id',
         'sku',
-        'name',
         'unit',
         'description',
     ];

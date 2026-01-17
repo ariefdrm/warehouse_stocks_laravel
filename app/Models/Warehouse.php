@@ -12,6 +12,7 @@ class Warehouse extends Model
     //
     use HasFactory;
 
+    protected $table = 'warehouse';
     protected $fillable = [
         'name',
         'location',

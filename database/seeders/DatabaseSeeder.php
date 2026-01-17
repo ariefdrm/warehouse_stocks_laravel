@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
             [
                 'role_name' => 'supervisor'
             ],
-            [
+            /* [
                 'role_name' => 'auditor'
-            ],
+            ], */
         ];
 
         foreach ($roles as $role_data) {

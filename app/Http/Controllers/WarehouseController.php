@@ -33,6 +33,7 @@ class WarehouseController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100', 'unique:warehouse,name'],
             'location' => ['nullable', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
         ]);
 
         Warehouse::create($validated);
@@ -45,7 +46,7 @@ class WarehouseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id, Warehouse $warehouse)
+    public function show(Warehouse $warehouse)
     {
         return view('warehouses.show', compact('warehouse'));
     }
@@ -53,7 +54,7 @@ class WarehouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id, Warehouse $warehouse)
+    public function edit(Warehouse $warehouse)
     {
         return view('warehouses.edit', compact('warehouse'));
     }
@@ -61,7 +62,7 @@ class WarehouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id, Warehouse $warehouse)
+    public function update(Request $request,  Warehouse $warehouse)
     {
         $validated = $request->validate([
             'name' => [
@@ -83,7 +84,7 @@ class WarehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id, Warehouse $warehouse)
+    public function destroy(Warehouse $warehouse)
     {
         $warehouse->delete();
 
