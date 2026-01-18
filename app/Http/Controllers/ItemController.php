@@ -36,9 +36,9 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_id' => ['required', 'exists:categories,id'],
-            'name'        => ['required', 'string', 'max:150'],
-            'sku'         => ['required', 'string', 'max:100', 'unique:items,sku'],
+            'category_id' => ['required', 'exists:category,id'],
+            'sku'        => ['required', 'string', 'max:150'],
+            'unit'         => ['required', 'string', 'max:100', 'unique:items,sku'],
             'description' => ['nullable', 'string'],
         ]);
 

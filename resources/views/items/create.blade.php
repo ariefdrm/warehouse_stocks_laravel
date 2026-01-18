@@ -14,8 +14,8 @@
                     {{-- Nama Barang --}}
                     <div>
                         <x-input-label for="name" :value="__('Nama Barang')" class="font-bold text-slate-700" />
-                        <x-text-input id="name" name="name" type="text" class="mt-1 block w-full rounded-2xl border-slate-200" :value="old('name')" required placeholder="Contoh: Laptop Pro X" />
-                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                        <x-text-input id="name" name="unit" type="text" class="mt-1 block w-full rounded-2xl border-slate-200" :value="old('name')" required placeholder="Contoh: Laptop Pro X" />
+                        <x-input-error class="mt-2" :messages="$errors->get('unit')" />
                     </div>
 
                     {{-- SKU --}}

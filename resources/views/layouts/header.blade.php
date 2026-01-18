@@ -4,6 +4,7 @@
             <h1 class="text-xl font-bold text-slate-900">@yield('page-title', 'Dashboard')</h1>
         </div>
 
+
         <div class="flex items-center gap-4">
             <div class="flex flex-col text-right">
                 <span class="text-sm font-bold text-slate-800">{{ auth()->user()->name }}</span>

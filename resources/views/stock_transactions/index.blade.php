@@ -1,3 +1,5 @@
+@section('page-title', "Transaksi Stok")
+
 <x-app-layout>
     <x-slot name="header">{{ __('Riwayat Transaksi Stok') }}</x-slot>
 

@@ -1,11 +1,13 @@
 {{-- resources/views/categories/create.blade.php --}}
-@extends('layouts.app')
+<x-app-layout>
+<x-slot name="header">
+    <h2 class="font-bold text-2xl text-slate-900 leading-tight">
+        {{ __('Registrasi Kategori Baru') }}
+    </h2>
+</x-slot>
 
-@section('title', 'Tambah Kategori Baru')
-
-@section('content')
-<div class="max-w-2xl mx-auto">
-    <div class="bg-white rounded-enterprise border border-slate-200 shadow-sm overflow-hidden">
+<div class="max-w-2xl mx-auto ">
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <form action="{{ route('categories.store') }}" method="POST" class="p-8 space-y-6">
             @csrf
 
@@ -28,11 +30,11 @@
             <div class="pt-4 flex items-center justify-end space-x-4 border-t border-slate-100">
                 <a href="{{ route('categories.index') }}" class="text-sm font-medium text-slate-500 hover:text-slate-700">Batal</a>
                 <button type="submit"
-                        class="px-6 py-2 bg-brand-primary text-white text-sm font-semibold rounded-enterprise bg-blue-400 hover:bg-blue-700 transition shadow-sm">
+                        class="px-6 py-2 bg-brand-primary text-white text-sm font-semibold rounded-xl bg-blue-400 hover:bg-blue-700 transition shadow-sm">
                     Simpan Kategori
                 </button>
             </div>
         </form>
     </div>
 </div>
-@endsection
+</x-app-layout>

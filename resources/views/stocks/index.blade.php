@@ -1,8 +1,10 @@
+@section('page-title', "Manajemen Stock")
+
 <x-app-layout>
     <x-slot name="header">{{ __('Manajemen Stok') }}</x-slot>
 
     <x-slot name="actions">
-        <a href="{{ route('stocks.create') }}" class="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+        <a href="{{ route('stocks.create') }}" class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Inisialisasi Stok
         </a>

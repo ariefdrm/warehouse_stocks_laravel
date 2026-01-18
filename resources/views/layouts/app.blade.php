@@ -78,22 +78,60 @@
         <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
 
             @isset($header)
-                <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-5 z-30 shrink-0">
-                    <div class="max-w-full mx-auto flex items-center justify-between">
-                        <div>
-                            <h2 class="font-bold text-2xl text-slate-800 tracking-tight leading-tight">
-                                {{ $header }}
-                            </h2>
-                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">
-                                StokFlow &bull; Enterprise Resource Planning
-                            </p>
+                <header
+                    class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-3 sticky top-0 z-40 transition-all duration-300">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <button @click="sidebarOpen = !sidebarOpen"
+                                class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-colors group">
+                                <div class="w-6 h-6 text-slate-600 group-hover:text-blue-600 transition-all duration-500"
+                                    :class="sidebarOpen ? 'rotate-0' : 'rotate-180'">
+                                    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                                    <!DOCTYPE svg
+                                        PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                    <svg width="100%" height="100%" viewBox="0 0 1600 1600" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                        <path
+                                            d="M477.608,1468.749c-191.399,-0.655 -346.358,-158.831 -346.358,-353.855l0,-633.435c-0,-92.881 36.24,-181.958 100.747,-247.635c64.507,-65.677 151.997,-102.574 243.224,-102.574l2.388,0l0,1337.499Zm100.308,-1337.499l517.037,0c206.442,0 373.796,170.389 373.796,380.576l0,564.191c-0,216.901 -172.7,392.734 -385.737,392.734l-505.096,0l0,-1337.5Zm243.643,725.976l132.166,130.296c5.184,10.48 13.771,18.956 24.298,23.955l3.795,3.742l1.544,-1.566c5.22,1.79 10.815,2.762 16.633,2.762c28.516,0 51.668,-23.334 51.668,-52.075c0,-14.288 -5.722,-27.24 -14.98,-36.653c-1.963,-5.331 -5.087,-10.22 -9.21,-14.284l-119.04,-117.356l123.524,-128.151c18.865,-8.428 32.133,-28.327 32.133,-51.509c0,-30.803 -23.426,-55.81 -52.28,-55.81c-13.546,0 -25.895,5.512 -35.186,14.547l-0.243,-0.234l-177.189,183.826l0.955,0.921c-8.212,10.739 -13.203,24.88 -13.203,40.367c0,26.343 14.441,48.795 34.613,57.226Z" />
+                                    </svg>
+                                </div>
+                            </button>
+
+                            <h1 class="text-xl font-bold text-slate-900 tracking-tight">
+                                @yield('page-title', 'Dashboard')
+                            </h1>
                         </div>
 
-                        @isset($actions)
-                            <div class="flex items-center gap-3">
-                                {{ $actions }}
+                        <div class="flex items-center gap-6">
+                            @isset($actions)
+                                <div class="flex items-center gap-3">
+                                    {{ $actions }}
+                                </div>
+                            @endisset
+
+                            <div class="flex flex-col text-right hidden md:flex border-l border-slate-200 pl-6">
+                                <span class="text-sm font-bold text-slate-800">{{ auth()->user()->name }}</span>
+                                <span class="text-[10px] text-blue-600 font-bold uppercase tracking-widest">
+                                    {{ auth()->user()->role->name ?? 'User' }}
+                                </span>
                             </div>
-                        @endisset
+
+                            @if (request()->routeIs('dashboard'))
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button
+                                        class="p-2.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all shadow-sm border border-transparent hover:border-red-100">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
                     </div>
                 </header>
             @endisset
