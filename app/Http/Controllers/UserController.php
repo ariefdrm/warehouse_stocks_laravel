@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,6 +18,37 @@ class UserController extends Controller
         return view('users.index', [
             'users' => User::with('role')->paginate(10),
         ]);
+    }
+
+    public function create()
+    {
+        return view('users.create', [
+            'roles' => Roles::where('role_name', '!=', 'owner')->get(),
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        // Proteksi tambahan (double safety)
+        if (!Auth::user()->isOwner()) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'roles_id'  => 'required|exists:roles,id',
+        ]);
+
+        User::create([
+            'name'     => $validated['name'],
+            'email'    => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'roles_id'  => $validated['roles_id'],
+        ]);
+
+        return redirect()->route('users.index');
     }
 
     public function edit(User $user)

@@ -10,6 +10,8 @@
 
     <div class="space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        @if (auth()->user()->hasAnyRole(['owner', 'admin']))
             <div
                 class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group hover:border-blue-500 transition-all">
                 <div class="flex items-center justify-between mb-4">
@@ -24,7 +26,9 @@
                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Total Kuantitas Stok</p>
                 <h3 class="text-3xl font-black text-slate-800 tracking-tight mt-1">{{ number_format($totalStock) }}</h3>
             </div>
+        @endif
 
+        @if (auth()->user()->hasAnyRole(['owner', 'admin']))
             <div
                 class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group hover:border-indigo-500 transition-all">
                 <div class="flex items-center justify-between mb-4">
@@ -40,7 +44,9 @@
                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Jenis Barang</p>
                 <h3 class="text-3xl font-black text-slate-800 tracking-tight mt-1">{{ $totalItems }}</h3>
             </div>
+        @endif
 
+        @if (auth()->user()->hasAnyRole(['owner', 'admin']))
             <div
                 class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group hover:border-emerald-500 transition-all">
                 <div class="flex items-center justify-between mb-4">
@@ -56,7 +62,9 @@
                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Titik Lokasi Gudang</p>
                 <h3 class="text-3xl font-black text-slate-800 tracking-tight mt-1">{{ $totalWarehouses }}</h3>
             </div>
+        @endif
 
+        @if (auth()->user()->hasAnyRole(['owner', 'admin']))
             <div
                 class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group hover:border-amber-500 transition-all">
                 <div class="flex items-center justify-between mb-4">
@@ -72,6 +80,7 @@
                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Kategori Produk</p>
                 <h3 class="text-3xl font-black text-slate-800 tracking-tight mt-1">{{ $totalCategories }}</h3>
             </div>
+        @endif
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -139,6 +148,8 @@
                             Segera Restock</h3>
                     </div>
                 </div>
+
+            @if (auth()->user()->hasAnyRole(['owner', 'admin']))
                 <div class="p-0">
                     <table class="w-full text-left">
                         <tbody class="divide-y divide-slate-50">
@@ -179,6 +190,7 @@
                         </tbody>
                     </table>
                 </div>
+            @endif
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 @section('page-title', "Transaksi Stok")
 
 <x-app-layout>
-    <x-slot name="header">{{ __('Riwayat Transaksi Stok') }}</x-slot>
+    <x-slot name="header">{{ ('Riwayat Transaksi Stok') }}</x-slot>
 
     <x-slot name="actions">
         <a href="{{ route('stock-transactions.create') }}" class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200">

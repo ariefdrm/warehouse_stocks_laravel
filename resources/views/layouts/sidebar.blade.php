@@ -28,49 +28,70 @@
             <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Dashboard</span>
         </a>
 
-        <a href="/categories"
-            class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
-            </svg>
-            <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Categories</span>
-        </a>
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor']))
+            <a href="/categories"
+                class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+                </svg>
+                <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Categories</span>
+            </a>
+        @endif
+
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor']))
+            <a href="/warehouses"
+                class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                </svg>
+                <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Warehouses</span>
+            </a>
+        @endif
+
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor']))
+            <a href="/items"
+                class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                </svg>
+                <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">items</span>
+            </a>
+        @endif
+
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor', 'staff']))
+            <a href="/stocks"
+                class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                </svg>
+                <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">stocks</span>
+
+            </a>
+        @endif
 
 
-        <a href="/warehouses"
-            class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-            </svg>
-            <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Warehouses</span>
-        </a>
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor', 'staff']))
+            <a href="/stock-transactions"
+                class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg>
+                <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">stock-transactions</span>
+            </a>
 
-        <a href="/items"
-            class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-            </svg>
-            <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">items</span>
-        </a>
-
-        <a href="/stocks"
-            class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-            </svg>
-            <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">stocks</span>
-
-        </a>
+        @endif
 
 
-        <a href="/stock-transactions"
-            class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
-            </svg>
-            <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">stock-transactions</span>
-        </a>
+        @if (auth()->user()->hasrole('owner'))
+            <a href="/users"
+                class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                </svg>
+                <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Users</span>
+            </a>
+        @endif
 
     </nav>
 
@@ -88,7 +109,7 @@
                 x-show="sidebarOpen" x-transition:enter="delay-100">
                 <p class="text-sm font-bold text-slate-200 leading-none">{{ explode(' ', auth()->user()->name)[0] }}</p>
                 <p class="text-[10px] text-slate-500 mt-1 uppercase tracking-wider font-semibold">
-                    {{ auth()->user()->role->name ?? 'User' }}</p>
+                    {{ auth()->user()->role->role_name ?? 'User' }}</p>
             </div>
 
             <svg x-show="sidebarOpen" class="ml-auto w-4 h-4 text-slate-500 transition-transform"

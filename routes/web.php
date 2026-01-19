@@ -26,7 +26,7 @@ Route::middleware(['auth', 'roles:owner'])->group(function () {
     Route::resource('users', UserController::class);
 });
 
-Route::middleware(['auth', 'roles:admin,owner'])->group(function () {
+Route::middleware(['auth', 'roles:admin,owner,staff'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('warehouses', WarehouseController::class);
     Route::resource('items', ItemController::class);

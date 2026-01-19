@@ -61,8 +61,8 @@ class DashboardController extends Controller
          | STAFF
          |===================== */
         if ($user->hasRole('staff')) {
-            $data['recentTransactions'] = StocksTransaction::with(['item', 'warehouse'])
-                ->where('user_id', $user->id)
+            $data['recentTransactions'] = StocksTransaction::with(['items', 'warehouse'])
+                ->where('users_id', $user->id)
                 ->latest()
                 ->limit(5)
                 ->get();

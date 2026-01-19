@@ -19,7 +19,9 @@
                         <th class="px-8 py-4">Gudang / Lokasi</th>
                         <th class="px-8 py-4 text-center">Jumlah Stok</th>
                         <th class="px-8 py-4">Status</th>
-                        <th class="px-8 py-4 text-center">Aksi</th>
+                        @if (!auth()->user()->hasRole('staff'))
+                            <th class="px-8 py-4 text-center">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100">
@@ -48,6 +50,7 @@
                                 <span class="px-2 py-1 bg-green-50 text-green-600 text-[10px] font-black uppercase rounded-md border border-green-100">Healthy</span>
                             @endif
                         </td>
+                        @if (!auth()->user()-hasRole('staff'))
                         <td class="px-8 py-4 text-center">
                             <div class="flex justify-center gap-1">
                                 <a href="{{ route('stocks.edit', $stock) }}" class="p-2 text-slate-400 hover:text-blue-600 transition-colors">
@@ -61,6 +64,7 @@
                                 </form>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @empty
                     <tr>

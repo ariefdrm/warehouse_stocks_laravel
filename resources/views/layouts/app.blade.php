@@ -114,7 +114,7 @@
                             <div class="flex flex-col text-right hidden md:flex border-l border-slate-200 pl-6">
                                 <span class="text-sm font-bold text-slate-800">{{ auth()->user()->name }}</span>
                                 <span class="text-[10px] text-blue-600 font-bold uppercase tracking-widest">
-                                    {{ auth()->user()->role->name ?? 'User' }}
+                                    {{ auth()->user()->role->role_name ?? 'User' }}
                                 </span>
                             </div>
 
