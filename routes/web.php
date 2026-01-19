@@ -22,11 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'roles:owner'])->group(function () {
+Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::resource('users', UserController::class);
 });
 
-Route::middleware(['auth', 'roles:admin,owner,staff'])->group(function () {
+Route::middleware(['auth', 'role:admin,owner,staff'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('warehouses', WarehouseController::class);
     Route::resource('items', ItemController::class);

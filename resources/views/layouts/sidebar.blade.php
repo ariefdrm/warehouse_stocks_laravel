@@ -28,7 +28,7 @@
             <span class="ml-3 font-medium text-sm whitespace-nowrap" x-show="sidebarOpen">Dashboard</span>
         </a>
 
-        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor']))
+        @if (auth()->user()->hasAnyRole(['owner', 'admin']))
             <a href="/categories"
                 class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -39,7 +39,7 @@
             </a>
         @endif
 
-        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor']))
+        @if (auth()->user()->hasAnyRole(['owner', 'admin']))
             <a href="/warehouses"
                 class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -49,7 +49,7 @@
             </a>
         @endif
 
-        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'supervisor']))
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'staff']))
             <a href="/items"
                 class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

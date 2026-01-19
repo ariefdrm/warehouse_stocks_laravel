@@ -3,12 +3,14 @@
 <x-app-layout>
     <x-slot name="header">{{ __('Items') }}</x-slot>
 
+    @if (!auth()->user()->hasRole('staff'))
     <x-slot name="actions">
         <a href="{{ route('items.create') }}" class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-black dark:text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Tambah Item
         </a>
     </x-slot>
+    @endif
 
     <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
@@ -18,7 +20,9 @@
                         <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Unit & SKU</th>
                         <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Kategori</th>
                         <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Deskripsi</th>
-                        <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Aksi</th>
+                        @if (!auth()->user()->hasRole('staff'))
+                            <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest text-right">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-50">
@@ -38,6 +42,7 @@
                             <td class="px-8 py-5 text-sm text-slate-500 max-w-xs truncate italic">
                                 {{ $item->description ?? '-' }}
                             </td>
+                            @if (!auth()->user()->hasRole('staff'))
                             <td class="px-8 py-5 text-right">
                                 <div class="flex justify-end items-center gap-3">
                                     <a href="{{ route('items.edit', $item) }}" class="p-2 text-slate-400 hover:text-brand-primary hover:bg-blue-50 rounded-xl transition-all">
@@ -51,6 +56,7 @@
                                     </form>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                     @empty
                         <tr>

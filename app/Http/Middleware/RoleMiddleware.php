@@ -9,16 +9,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    public function handle($request, Closure $next, ...$roles)
+    /**
+     * Handle an incoming request.
+     */
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
         $user = Auth::user();
 
-        if (! $user) {
-            abort(401);
+        // Belum login atau tidak punya role
+        if (!$user || !$user->role) {
+            abort(403, 'Unauthorized');
         }
 
-        if (! in_array($user->role->role_name, $roles)) {
-            abort(403, 'Forbidden');
+        // Cocokkan dengan role_name di tabel roles
+        if (!in_array($user->role->role_name, $roles)) {
+            abort(403, 'Unauthorized');
         }
 
         return $next($request);
