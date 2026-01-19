@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'roles_id'
     ];
 
     /**
@@ -57,5 +58,15 @@ class User extends Authenticatable
     public function hasRole(string $role): bool
     {
         return $this->role?->role_name === $role;
+    }
+
+    public function isOwner(): bool
+    {
+        return $this->hasRole('owner');
+    }
+
+    public function canManageUsers(): bool
+    {
+        return $this->isOwner() || $this->hasRole('admin');
     }
 }

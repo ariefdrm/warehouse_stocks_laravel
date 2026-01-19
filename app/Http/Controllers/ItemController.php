@@ -37,8 +37,8 @@ class ItemController extends Controller
     {
         $validated = $request->validate([
             'category_id' => ['required', 'exists:category,id'],
-            'sku'        => ['required', 'string', 'max:150'],
-            'unit'         => ['required', 'string', 'max:100', 'unique:items,sku'],
+            'sku'        => ['required', 'string', 'max:150', 'unique:items,sku'],
+            'unit'         => ['required', 'string', 'max:100'],
             'description' => ['nullable', 'string'],
         ]);
 
@@ -82,6 +82,7 @@ class ItemController extends Controller
                 'max:100',
                 'unique:items,sku,' . $item->id,
             ],
+            'unit'         => ['required', 'string', 'max:100'],
             'description' => ['nullable', 'string'],
         ]);
 

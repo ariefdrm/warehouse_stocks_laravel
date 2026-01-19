@@ -23,7 +23,7 @@
                     {{-- Unit Barang --}}
                     <div>
                         <x-input-label for="unit" :value="__('Unit Barang')" class="font-bold text-slate-700" />
-                        <x-text-input id="unit" name="name" type="text"
+                        <x-text-input id="unit" name="unit" type="text"
                                       class="mt-1 block w-full rounded-2xl border-slate-200 focus:ring-4 focus:ring-blue-50"
                                       :value="old('unit', $item->unit)"
                                       required />

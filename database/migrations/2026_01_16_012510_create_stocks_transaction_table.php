@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('users_id')->references('id')->on('users')->cascadeOnDelete();
             $table->enum('type', ['IN', 'OUT']);
             $table->integer('quantity');
-            $table->longText('note');
+            $table->longText('note')->nullable();
             $table->date('transaction_date')->useCurrent();
             $table->timestamps();
         });

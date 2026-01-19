@@ -64,6 +64,7 @@
                 <div class="space-y-3">
                     <x-input-label for="note" :value="__('Catatan Tambahan')" />
                     <textarea id="note" name="note" rows="3" class="block w-full border-slate-200 focus:border-slate-900 focus:ring-slate-900 rounded-2xl shadow-sm placeholder:text-slate-300" placeholder="Ketik alasan transaksi (contoh: Penjualan ritel, Stok opname, dll)"></textarea>
+                    <x-input-error :messages="$errors->get('note')" class="mt-2" />
                 </div>
 
                 <div class="flex items-center gap-4 pt-6 border-t border-slate-100">

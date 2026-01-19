@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockTransactionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'roles:admin'])->group(function () {
+Route::middleware(['auth', 'roles:owner'])->group(function () {
+    Route::resource('users', UserController::class);
+});
+
+Route::middleware(['auth', 'roles:admin,owner'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('warehouses', WarehouseController::class);
     Route::resource('items', ItemController::class);

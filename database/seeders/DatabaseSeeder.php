@@ -20,23 +20,15 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            [
-                'role_name' => 'admin'
-            ],
-            [
-                'role_name' => 'staff'
-            ],
-            [
-                'role_name' => 'supervisor'
-            ],
-            /* [
-                'role_name' => 'auditor'
-            ], */
+            'owner',
+            'admin',
+            'supervisor',
+            'staff',
         ];
 
-        foreach ($roles as $role_data) {
-            Roles::create($role_data);
-        };
+        foreach ($roles as $role) {
+            Roles::firstOrCreate(['role_name' => $role]);
+        }
 
         // Category
         $category = [
@@ -64,12 +56,21 @@ class DatabaseSeeder extends Seeder
 
 
         // User::factory(10)->create();
+        // Create a single owner user with known credentials
+        User::create([
+            'name' => 'Owner User',
+            'email' => 'owner@example.com',
+            'password' => Hash::make('password'), // Use a secure default password
+            'roles_id' => 1,
+            'email_verified_at' => now(),
+        ]);
+
         // Create a single admin user with known credentials
         User::create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'), // Use a secure default password
-            'roles_id' => 1,
+            'roles_id' => 2,
             'email_verified_at' => now(),
         ]);
     }

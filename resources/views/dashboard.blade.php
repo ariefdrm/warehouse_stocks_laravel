@@ -107,7 +107,7 @@
                                             </div>
                                             <div>
                                                 <p class="text-sm font-bold text-slate-700 leading-tight">
-                                                    {{ $trx->items->name ?? 'Barang Dihapus' }}</p>
+                                                    {{ $trx->items->unit ?? 'Barang Dihapus' }}</p>
                                                 <p class="text-[10px] text-slate-400 mt-1 uppercase font-semibold">
                                                     {{ $trx->warehouse->name ?? 'Global' }} &bull;
                                                     {{ $trx->created_at->diffForHumans() }}</p>

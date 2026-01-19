@@ -155,19 +155,20 @@
                         @yield('content')
                     @endif
 
-                    <footer class="py-12 mt-12 border-t border-slate-200">
-                        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                            <p class="text-[11px] text-slate-400 font-medium uppercase tracking-widest">
-                                &copy; {{ date('Y') }} StokFlow System v1.0.4
-                            </p>
-                            <div class="flex gap-6">
-                                <span class="text-[10px] font-bold text-slate-300 uppercase">Privacy Policy</span>
-                                <span class="text-[10px] font-bold text-slate-300 uppercase">Terms of Service</span>
-                            </div>
-                        </div>
-                    </footer>
                 </div>
             </main>
+
+            <footer class="py-6 border-t border-slate-200 max-h-3 h-2">
+                <div class="flex flex-col px-4 md:flex-row justify-between items-center gap-4">
+                    <p class="text-[11px] text-slate-400 font-medium uppercase tracking-widest">
+                        &copy; {{ date('Y') }} StokFlow System
+                    </p>
+                    <div class="flex gap-6">
+                        <span class="text-[10px] font-bold text-slate-300 uppercase">Privacy Policy</span>
+                        <span class="text-[10px] font-bold text-slate-300 uppercase">Terms of Service</span>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 </body>

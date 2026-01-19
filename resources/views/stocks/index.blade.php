@@ -27,7 +27,7 @@
                     <tr class="hover:bg-slate-50/50 transition-colors group">
                         <td class="px-8 py-4">
                             <div class="flex flex-col">
-                                <span class="font-bold text-black">{{ $stock->items->sku }}</span>
+                                <span class="font-bold text-black">{{ $stock->items->unit }}</span>
                                 <span class="text-[10px] text-black font-medium tracking-tight">ID: #{{ $stock->items->id }}</span>
                             </div>
                         </td>
