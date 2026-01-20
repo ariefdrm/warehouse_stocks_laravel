@@ -3,12 +3,13 @@
 <x-app-layout>
     <x-slot name="header">{{ __('Items') }}</x-slot>
 
-    @if (!auth()->user()->hasRole('staff'))
     <x-slot name="actions">
+        @if(auth()->user()->hasAnyRole(['admin', 'owner']))
         <a href="{{ route('items.create') }}" class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-black dark:text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Tambah Item
         </a>
+        @endif
         @if(auth()->user()->hasAnyRole(['supervisor', 'admin', 'owner']))
             <a href="{{ route('reports.items.download') }}"
             class="bg-green-600 hover:bg-green-900 inline-block px-3.5 py-2 rounded-xl text-white font-bold">
@@ -16,7 +17,6 @@
             </a>
         @endif
     </x-slot>
-    @endif
 
     <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">

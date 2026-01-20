@@ -80,8 +80,15 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now()
             ],
             [
+                'name' => 'Supervisor User',
+                'email' => 'supervisor@example.com',
+                'password' => Hash::make('password'),
+                'roles_id' => 3,
+                'email_verified_at' => now()
+            ],
+            [
                 'name' => 'Staff User',
-                'email' => 'Staff@example.com',
+                'email' => 'staff@example.com',
                 'password' => Hash::make('password'),
                 'roles_id' => 4,
                 'email_verified_at' => now()

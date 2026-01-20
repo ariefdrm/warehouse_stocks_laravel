@@ -23,11 +23,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// implementing RBAC
 Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::resource('users', UserController::class);
 });
 
-Route::middleware(['auth', 'role:admin,owner,staff'])->group(function () {
+Route::middleware(['auth', 'role:admin,owner'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('warehouses', WarehouseController::class);
     Route::resource('items', ItemController::class);
@@ -35,9 +36,25 @@ Route::middleware(['auth', 'role:admin,owner,staff'])->group(function () {
         ->except(['show']);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:owner,admin,supervisor,staff'])->group(function () {
+    Route::resource('items', ItemController::class)
+        ->only(['index']);
+    Route::resource('stocks', StockController::class)
+        ->only(['index']);
     Route::resource('stock-transactions', StockTransactionController::class)
-        ->only(['index', 'create', 'store']);
+        ->only(['index']);
+});
+
+Route::middleware(['auth', 'role:owner,admin'])->group(function () {
+    Route::resource('items', ItemController::class)
+        ->except(['index']);
+    Route::resource('stocks', StockController::class)
+        ->except(['index']);
+});
+
+Route::middleware(['auth', 'role:owner,admin,staff'])->group(function () {
+    Route::resource('stock-transactions', StockTransactionController::class)
+        ->except(['index']);
 });
 
 Route::middleware(['auth', 'role:supervisor,admin,owner'])->group(function () {

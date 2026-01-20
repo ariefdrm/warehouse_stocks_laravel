@@ -193,5 +193,74 @@
             @endif
             </div>
         </div>
+{{-- Section: Latest Items --}}
+    <div class="mt-8">
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h3 class="text-lg font-bold text-slate-800">Daftar Item Terbaru</h3>
+                <p class="text-xs text-slate-500">Item yang baru saja ditambahkan ke sistem StokFlow.</p>
+            </div>
+            <a href="{{ route('items.index') }}" class="text-xs font-bold text-blue-600 hover:text-blue-700 uppercase tracking-widest">
+                Lihat Semua Item →
+            </a>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-slate-50/50 text-[11px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">
+                            <th class="px-8 py-4">Informasi Barang</th>
+                            <th class="px-8 py-4">Kategori</th>
+                            <th class="px-8 py-4">Tanggal Input</th>
+                            {{-- <th class="px-8 py-4 text-right">Status</th> --}}
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        @forelse($latestItems as $item)
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-8 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-slate-700 leading-tight">{{ $item->unit }}</span>
+                                        <span class="text-[10px] text-slate-400 uppercase tracking-tighter">{{ $item->sku ?? 'No SKU' }}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-8 py-4">
+                                <span class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-blue-50 text-blue-600 border border-blue-100 uppercase">
+                                    {{ $item->category->name ?? 'Uncategorized' }}
+                                </span>
+                            </td>
+                            <td class="px-8 py-4 text-sm text-slate-500">
+                                {{ $item->created_at->format('d M Y') }}
+                            </td>
+                            {{--<td class="px-8 py-4 text-right">
+                                <div class="flex justify-end">
+                                    <a href="{{ route('items.show', $item) }}" class="p-2 text-slate-400 hover:text-blue-600 transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </td> --}}
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4" class="px-8 py-12 text-center text-slate-400 text-sm italic">
+                                Belum ada data item yang tersedia.
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     </div>
 </x-app-layout>

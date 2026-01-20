@@ -24,6 +24,7 @@ class DashboardController extends Controller
                 ->latest()
                 ->limit(5)
                 ->get(),
+            'latestItems' => Items::with('category')->latest()->limit(5)->get(),
         ];
 
         /* =====================

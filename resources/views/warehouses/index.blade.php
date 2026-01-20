@@ -33,6 +33,7 @@
                     <tr class="bg-slate-50/50 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
                         <th class="px-8 py-4">Nama Gudang</th>
                         <th class="px-8 py-4">Lokasi / Alamat</th>
+                        <th class="px-8 py-4">Deskripsi</th>
                         <th class="px-8 py-4 text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -48,6 +49,7 @@
                             </div>
                         </td>
                         <td class="px-8 py-4 text-sm text-slate-500">{{ $warehouse->location ?? 'Lokasi belum diatur' }}</td>
+                        <td class="px-8 py-5 text-sm text-slate-500 max-w-xs truncate italic">{{ $warehouse->description ?? '-' }}</td>
                         <td class="px-8 py-4">
                             <div class="flex justify-center gap-2">
                                 <a href="{{ route('warehouses.show', $warehouse) }}" class="p-2 text-slate-400 hover:text-blue-600 transition-colors">

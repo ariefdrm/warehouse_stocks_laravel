@@ -18,9 +18,9 @@ class ItemsFactory extends Factory
     {
         return [
             //
-            'category_id' => $this->faker->numberBetween(1, 5),
+            'category_id' => $this->faker->numberBetween(1, 4),
             'sku' => $this->faker->randomAscii(),
-            'unit' => $this->faker->name,
+            'unit' => $this->faker->sentence(2),
             'description' => $this->faker->paragraph(),
         ];
     }

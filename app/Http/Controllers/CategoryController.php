@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Items;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -43,7 +44,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        $item = Items::get();
+
+        return view('categories.show', compact('category', 'item'));
     }
 
     public function edit(Category $category)

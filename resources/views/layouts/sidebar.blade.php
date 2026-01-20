@@ -49,7 +49,7 @@
             </a>
         @endif
 
-        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'staff']))
+        @if (auth()->user()->hasAnyRole(['owner', 'admin', 'staff', 'supervisor']))
             <a href="/items"
                 class="flex items-center px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
