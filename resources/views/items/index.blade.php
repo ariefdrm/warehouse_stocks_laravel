@@ -23,7 +23,7 @@
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="bg-slate-50/50 border-b border-slate-100">
-                        <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Unit & SKU</th>
+                        <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Nama Unit & SKU</th>
                         <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Kategori</th>
                         <th class="px-8 py-5 text-xs font-bold text-slate-400 uppercase tracking-widest">Deskripsi</th>
                         @if (!auth()->user()->hasRole('staff'))

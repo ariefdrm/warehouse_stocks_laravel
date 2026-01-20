@@ -17,6 +17,7 @@ class Stocks extends Model
         'items_id',
         'warehouse_id',
         'quantity',
+        'initial_stock'
     ];
 
     /* ================= RELATION ================= */

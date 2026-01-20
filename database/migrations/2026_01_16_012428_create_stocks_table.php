@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('items_id')->references('id')->on('items')->cascadeOnDelete();
             $table->foreignId('warehouse_id')->references('id')->on('warehouse')->cascadeOnDelete();
             $table->integer('quantity');
+            $table->integer('initial_stock')->nullable();
             $table->timestamps();
         });
     }

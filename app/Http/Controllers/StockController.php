@@ -56,6 +56,8 @@ class StockController extends Controller
                 ->withInput();
         }
 
+        $validated['initial_stock'] = $validated['quantity'];
+
         Stocks::create($validated);
 
         return redirect()
@@ -105,7 +107,7 @@ class StockController extends Controller
     {
         if ($stock->quantity > 0) {
             return back()->withErrors([
-                'quantity' => 'Stok tidak bisa dihapus jika masih ada quantity.',
+                'quantity' => 'Stok tidak bisa dihapus jika masih ada stok.',
             ]);
         }
 

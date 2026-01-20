@@ -3,12 +3,13 @@
 <x-app-layout>
     <x-slot name="header">{{ __('Manajemen Stok') }}</x-slot>
 
-    @if (!auth()->user()->hasRole('staff'))
     <x-slot name="actions">
+        @if (!auth()->user()->hasAnyRole(['staff', 'supervisor']))
         <a href="{{ route('stocks.create') }}" class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition shadow-lg shadow-slate-200">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Inisialisasi Stok
         </a>
+        @endif
         @if(auth()->user()->hasAnyRole(['supervisor', 'admin', 'owner']))
             <a href="{{ route('reports.stocks.download') }}"
             class="bg-green-600 hover:bg-green-900 inline-block px-3.5 py-2 rounded-xl text-white font-bold">
@@ -16,7 +17,6 @@
             </a>
         @endif
     </x-slot>
-    @endif
 
     @if ($errors->has('quantity'))
         <div class="mb-6 flex items-center p-4 rounded-2xl bg-red-50 border border-red-100 shadow-sm animate-shake">
@@ -40,8 +40,9 @@
             <table class="w-full text-left">
                 <thead>
                     <tr class="bg-slate-50/50 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                        <th class="px-8 py-4">Nama Barang</th>
+                        <th class="px-8 py-4">Nama/Unit Barang</th>
                         <th class="px-8 py-4">Gudang / Lokasi</th>
+                        <th class="px-8 py-4 text-center">Stok Awal</th>
                         <th class="px-8 py-4 text-center">Jumlah Stok</th>
                         <th class="px-8 py-4">Status</th>
                         @if (!auth()->user()->hasRole('staff'))
@@ -65,11 +66,15 @@
                             </div>
                         </td>
                         <td class="px-8 py-4 text-center">
+                            <span class="text-base font-black text-slate-800">{{ number_format($stock->initial_stock) }}</span>
+                            <span class="text-[10px] text-slate-400 font-bold ml-1 uppercase">Unit</span>
+                        </td>
+                        <td class="px-8 py-4 text-center">
                             <span class="text-base font-black text-slate-800">{{ number_format($stock->quantity) }}</span>
                             <span class="text-[10px] text-slate-400 font-bold ml-1 uppercase">{{ $stock->item->unit ?? 'Unit' }}</span>
                         </td>
                         <td class="px-8 py-4">
-                            @if($stock->quantity <= 5)
+                            @if($stock->quantity <= 10)
                                 <span class="px-2 py-1 bg-red-50 text-red-600 text-[10px] font-black uppercase rounded-md border border-red-100">Low Stock</span>
                             @else
                                 <span class="px-2 py-1 bg-green-50 text-green-600 text-[10px] font-black uppercase rounded-md border border-green-100">Healthy</span>

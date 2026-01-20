@@ -1,6 +1,14 @@
 <x-app-layout>
     <x-slot name="header">{{ __('Input Transaksi Baru') }}</x-slot>
 
+    <x-slot name="actions">
+        <a href="{{ route('stock-transactions.index') }}" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Kembali
+        </a>
+    </x-slot>
+
+    <div class="flex items-center justify-center">
     <div class="max-w-4xl" x-data="{ type: 'IN' }">
         <form action="{{ route('stock-transactions.store') }}" method="POST" class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-500">
             @csrf
@@ -43,7 +51,7 @@
                         <select name="items_id" id="item_id" class="block w-full border-slate-200 focus:border-slate-900 focus:ring-slate-900 rounded-xl shadow-sm transition-all" required>
                             <option value="">-- Cari Barang --</option>
                             @foreach($items as $item)
-                                <option value="{{ $item->id }}">{{ $item->sku }}</option>
+                                <option value="{{ $item->id }}">{{ $item->unit }}</option>
                             @endforeach
                         </select>
                         <x-input-error :messages="$errors->get('item_id')" class="mt-2" />
@@ -75,5 +83,6 @@
                 </div>
             </div>
         </form>
+    </div>
     </div>
 </x-app-layout>

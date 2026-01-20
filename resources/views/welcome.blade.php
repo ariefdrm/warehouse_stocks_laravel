@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:max-w-none lg:mx-0 lg:col-span-6 flex justify-center">
-                    <img src="{{ asset('images/warehouse.jpg') }}" alt="Warehouse Image"
+                    <img src="{{ asset('images/warehouse_worker.png') }}" alt="Warehouse Image"
                         class="rounded-xl shadow-xl mt-10 lg:mt-0 lg:col-span-6 object-cover">
                 </div>
                 {{-- <div

@@ -149,7 +149,6 @@
                     </div>
                 </div>
 
-            @if (auth()->user()->hasAnyRole(['owner', 'admin']))
                 <div class="p-0">
                     <table class="w-full text-left">
                         <tbody class="divide-y divide-slate-50">
@@ -190,7 +189,6 @@
                         </tbody>
                     </table>
                 </div>
-            @endif
             </div>
         </div>
 {{-- Section: Latest Items --}}

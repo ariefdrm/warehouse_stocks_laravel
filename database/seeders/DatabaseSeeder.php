@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Items;
 use App\Models\Roles;
 use App\Models\User;
+use App\Models\Warehouse;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -56,13 +57,37 @@ class DatabaseSeeder extends Seeder
             Category::create($data);
         }
 
+        $warehouses = [
+            [
+                'name' => 'Gudang 1',
+                'location' => 'Jambi',
+                'description' => 'Gudang khusus barang elektronik'
+            ],
+            [
+                'name' => 'Gudang 2',
+                'location' => 'DC Cakung',
+                'description' => 'Gudang khusus barang garmen'
+            ]
+        ];
+
+        foreach ($warehouses as $data) {
+            Warehouse::create($data);
+        }
+
+        $items = [
+            [
+                'category_id' => 1,
+                'sku' => 'SMP001',
+                'unit' => 'SmartPhone',
+                'description' => 'smartphone'
+            ]
+        ];
+
+
         // items
-        Items::create([
-            'category_id' => 1,
-            'sku' => 'SMP001',
-            'unit' => 'SmartPhone',
-            'description' => 'smartphone'
-        ]);
+        foreach ($items as $data) {
+            Items::create($data);
+        }
 
         $users = [
             [

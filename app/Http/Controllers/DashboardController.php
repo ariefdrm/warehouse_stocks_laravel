@@ -20,11 +20,16 @@ class DashboardController extends Controller
          | BASE DATA (ALL ROLES)
          |===================== */
         $data = [
-            'recentTransactions' => StocksTransaction::with(['items', 'warehouse', 'users'])
+            'recentTransactions' => StocksTransaction::with(['items', 'warehouse'])
                 ->latest()
                 ->limit(5)
                 ->get(),
             'latestItems' => Items::with('category')->latest()->limit(5)->get(),
+            'lowStocks' => Stocks::with(['items', 'warehouse'])
+                ->where('quantity', '<', 10)
+                ->orderBy('quantity')
+                ->limit(5)
+                ->get()
         ];
 
         /* =====================
@@ -54,7 +59,11 @@ class DashboardController extends Controller
          |===================== */
         if ($user->hasRole('supervisor')) {
             $data['totalItems'] = Items::count();
-            $data['totalStock'] = Stocks::sum('quantity');
+            $data['lowStocks'] = Stocks::with(['items', 'warehouse'])
+                ->where('quantity', '<', 10)
+                ->orderBy('quantity')
+                ->limit(5)
+                ->get();
         }
 
         /* =====================
@@ -62,8 +71,12 @@ class DashboardController extends Controller
          |===================== */
         if ($user->hasRole('staff')) {
             $data['recentTransactions'] = StocksTransaction::with(['items', 'warehouse'])
-                ->where('users_id', $user->id)
                 ->latest()
+                ->limit(5)
+                ->get();
+            $data['lowStocks'] = Stocks::with(['items', 'warehouse'])
+                ->where('quantity', '<', 10)
+                ->orderBy('quantity')
                 ->limit(5)
                 ->get();
         }

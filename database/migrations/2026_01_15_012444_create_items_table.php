@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('category')->cascadeOnDelete();
             $table->string('sku');
             $table->string('unit');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

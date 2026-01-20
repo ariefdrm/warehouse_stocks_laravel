@@ -131,8 +131,9 @@ class ReportController extends Controller
         $headers = [
             'A1' => 'Gudang',
             'B1' => 'SKU',
-            'C1' => 'Quantity',
-            'D1' => 'Unit',
+            'C1' => 'Unit',
+            'D1' => 'Stok Awal',
+            'E1' => 'Jumlah Stok',
         ];
 
         foreach ($headers as $cell => $text) {
@@ -145,9 +146,10 @@ class ReportController extends Controller
         $row = 2;
         foreach ($stocks as $stock) {
             $sheet->setCellValue("A{$row}", optional($stock->warehouse)->name ?? '-')->getColumnDimension('A')->setAutoSize(true);
-            $sheet->setCellValue("B{$row}", optional($stock->item)->sku ?? '-')->getColumnDimension('B')->setAutoSize(true);
-            $sheet->setCellValue("C{$row}", $stock->quantity)->getColumnDimension('C')->setAutoSize(true);
-            $sheet->setCellValue("D{$row}", optional($stock->item)->unit ?? '-')->getColumnDimension('D')->setAutoSize(true);
+            $sheet->setCellValue("B{$row}", optional($stock->items)->sku ?? '-')->getColumnDimension('B')->setAutoSize(true);
+            $sheet->setCellValue("C{$row}", optional($stock->items)->unit ?? '-')->getColumnDimension('C')->setAutoSize(true);
+            $sheet->setCellValue("D{$row}", $stock->initial_stock)->getColumnDimension('D')->setAutoSize(true);
+            $sheet->setCellValue("E{$row}", $stock->quantity)->getColumnDimension('E')->setAutoSize(true);
             $row++;
         }
 
