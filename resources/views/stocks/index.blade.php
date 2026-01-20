@@ -9,6 +9,12 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             Inisialisasi Stok
         </a>
+        @if(auth()->user()->hasAnyRole(['supervisor', 'admin', 'owner']))
+            <a href="{{ route('reports.stocks.download') }}"
+            class="bg-green-600 hover:bg-green-900 inline-block px-3.5 py-2 rounded-xl text-white font-bold">
+                Download Reports
+            </a>
+        @endif
     </x-slot>
     @endif
 

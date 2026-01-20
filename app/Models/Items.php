@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Items extends Model
 {
-    //
     use HasFactory;
 
     protected $fillable = [
@@ -19,8 +18,6 @@ class Items extends Model
         'unit',
         'description',
     ];
-
-    /* ================= RELATION ================= */
 
     public function category()
     {
@@ -36,5 +33,6 @@ class Items extends Model
     {
         return $this->hasMany(StocksTransaction::class);
     }
+
     protected $guarded = [];
 }

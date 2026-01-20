@@ -34,7 +34,6 @@ class DashboardController extends Controller
             $data['totalItems']      = Items::count();
             $data['totalWarehouses'] = Warehouse::count();
             $data['totalStock']      = Stocks::sum('quantity');
-
             $data['lowStocks'] = Stocks::with(['items', 'warehouse'])
                 ->where('quantity', '<', 10)
                 ->orderBy('quantity')

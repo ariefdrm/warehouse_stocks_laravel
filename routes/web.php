@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockTransactionController;
 use App\Http\Controllers\UserController;
@@ -37,6 +38,17 @@ Route::middleware(['auth', 'role:admin,owner,staff'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('stock-transactions', StockTransactionController::class)
         ->only(['index', 'create', 'store']);
+});
+
+Route::middleware(['auth', 'role:supervisor,admin,owner'])->group(function () {
+    Route::get(
+        '/reports/stock-transactions/download',
+        [ReportController::class, 'downloadStockTransactions']
+    )->name('reports.stock-transactions.download');
+    Route::get('/reports/items/download', [ReportController::class, 'downloadItems'])
+        ->name('reports.items.download');
+    Route::get('/reports/stocks/download', [ReportController::class, 'downloadStocks'])
+        ->name('reports.stocks.download');
 });
 
 require __DIR__ . '/auth.php';
