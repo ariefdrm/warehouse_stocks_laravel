@@ -56,14 +56,14 @@ class StockTransactionController extends Controller
                 ->first();
 
             if (!$stock) {
-                abort(400, 'Stok belum tersedia untuk item dan warehouse ini.');
+                return back()->with('error', 'Maaf, Stok belum tersedia untuk item dan warehouse ini.');
             }
 
             if (
                 $validated['type'] === 'OUT' &&
                 $stock->quantity < $validated['quantity']
             ) {
-                abort(400, 'Stok tidak mencukupi.');
+                return  back()->with('error', 'Maaf, Anda tidak memiliki akses untuk transaksi stok ini.');
             }
 
             // Update stock

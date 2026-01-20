@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stocks;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 
@@ -48,6 +49,8 @@ class WarehouseController extends Controller
      */
     public function show(Warehouse $warehouse)
     {
+        $warehouse->load(['stocks.items.category'])->limit(10);
+
         return view('warehouses.show', compact('warehouse'));
     }
 

@@ -10,6 +10,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
+use function Symfony\Component\Clock\now;
+
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -40,6 +42,14 @@ class DatabaseSeeder extends Seeder
                 'name' => 'pakaian',
                 'description' => null
             ],
+            [
+                'name' => 'bahan baku',
+                'description' => null
+            ],
+            [
+                'name' => 'suku cadang',
+                'description' => null
+            ],
         ];
 
         foreach ($category as $data) {
@@ -49,29 +59,39 @@ class DatabaseSeeder extends Seeder
         // items
         Items::create([
             'category_id' => 1,
-            'sku' => 'SmartPhone',
-            'unit' => 'SMP001',
+            'sku' => 'SMP001',
+            'unit' => 'SmartPhone',
             'description' => 'smartphone'
         ]);
 
+        $users = [
+            [
+                'name' => 'Owner User',
+                'email' => 'owner@example.com',
+                'password' => Hash::make('password'),
+                'roles_id' => 1,
+                'email_verified_at' => now()
+            ],
+            [
+                'name' => 'Admin User',
+                'email' => 'admin@example.com',
+                'password' => Hash::make('password'),
+                'roles_id' => 2,
+                'email_verified_at' => now()
+            ],
+            [
+                'name' => 'Staff User',
+                'email' => 'Staff@example.com',
+                'password' => Hash::make('password'),
+                'roles_id' => 4,
+                'email_verified_at' => now()
+            ]
+        ];
+
 
         // User::factory(10)->create();
-        // Create a single owner user with known credentials
-        User::create([
-            'name' => 'Owner User',
-            'email' => 'owner@example.com',
-            'password' => Hash::make('password'), // Use a secure default password
-            'roles_id' => 1,
-            'email_verified_at' => now(),
-        ]);
-
-        // Create a single admin user with known credentials
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'), // Use a secure default password
-            'roles_id' => 2,
-            'email_verified_at' => now(),
-        ]);
+        foreach ($users as $user) {
+            User::create($user);
+        }
     }
 }
