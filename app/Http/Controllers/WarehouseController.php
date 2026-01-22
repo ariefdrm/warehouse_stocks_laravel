@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stocks;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 

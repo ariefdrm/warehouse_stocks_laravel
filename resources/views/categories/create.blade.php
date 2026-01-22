@@ -6,6 +6,13 @@
     </h2>
 </x-slot>
 
+<x-slot name="actions">
+    <a href="{{ route('categories.index') }}" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-600 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Kembali
+    </a>
+</x-slot>
+
 <div class="max-w-2xl mx-auto ">
     <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
         <form action="{{ route('categories.store') }}" method="POST" class="p-8 space-y-6">
