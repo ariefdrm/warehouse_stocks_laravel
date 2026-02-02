@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StokFlow - Warehouse Management System</title>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <!-- Scripts -->
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -60,10 +59,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8">
                 <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                    {{-- <span
-                        class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-700 uppercase bg-blue-100 rounded-full mb-4">
-                        v2.0 Telah Rilis
-                    </span> --}}
                     <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
                         Kelola Stok Gudang <span class="text-blue-600">Tanpa Pusing</span>
                     </h1>
@@ -76,35 +71,13 @@
                             class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all text-center">
                             Mulai Gratis
                         </a>
-                        {{-- <a href="#demo"
-                            class="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition text-center">
-                            Lihat Demo
-                        </a> --}}
+
                     </div>
                 </div>
                 <div class="w-full lg:max-w-none lg:mx-0 lg:col-span-6 flex justify-center">
                     <img src="{{ asset('images/warehouse_worker.webp') }}" alt="Warehouse Image"
                         class="rounded-xl shadow-xl mt-10 lg:mt-0 lg:col-span-6 object-cover">
                 </div>
-                {{-- <div
-                    class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div
-                        class="relative mx-auto w-full rounded-2xl shadow-2xl overflow-hidden bg-slate-800 border-8 border-slate-900">
-                        <div class="bg-slate-700 h-6 w-full flex items-center px-4 gap-1">
-                            <div class="w-2 h-2 rounded-full bg-red-400"></div>
-                            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
-                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                        </div>
-                        <div class="p-4">
-                            <div class="grid grid-cols-3 gap-4 mb-4">
-                                <div class="h-20 bg-slate-600 rounded-lg animate-pulse"></div>
-                                <div class="h-20 bg-slate-600 rounded-lg animate-pulse"></div>
-                                <div class="h-20 bg-slate-600 rounded-lg animate-pulse"></div>
-                            </div>
-                            <div class="h-40 bg-slate-600 rounded-lg animate-pulse"></div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </header>
